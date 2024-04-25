@@ -109,4 +109,14 @@ extern size_t argp_fmtstream_set_wmargin (argp_fmtstream_t __fs,
 /* Return the column number of the current output point in __FS.  */
 extern size_t argp_fmtstream_point (argp_fmtstream_t __fs);
 
+#ifdef __attribute__
+# if __GNUC__ < 2 ||(__GNUC__ == 2 && __GNUC_MINOR__ < 5) || defined(__STRICT_ANSI__)
+#  undef __attribute__
+# endif
+# if __GNUC__ < 2 ||(__GNUC__ == 2 && __GNUC_MINOR__ < 7) || defined(__STRICT_ANSI__)
+#  undef __format__
+#  undef __printf__
+# endif
+#endif
+
 #endif

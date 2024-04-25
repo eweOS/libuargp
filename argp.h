@@ -517,4 +517,14 @@ extern void argp_version_setup (const char *name, const char * const *authors);
 }
 #endif
 
+#ifdef __attribute__
+# if __GNUC__ < 2 ||(__GNUC__ == 2 && __GNUC_MINOR__ < 5) || defined(__STRICT_ANSI__)
+#  undef __attribute__
+# endif
+# if __GNUC__ < 2 ||(__GNUC__ == 2 && __GNUC_MINOR__ < 7) || defined(__STRICT_ANSI__)
+#  undef __format__
+#  undef __printf__
+# endif
+#endif
+
 #endif /* argp.h */
